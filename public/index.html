@@ -913,6 +913,7 @@ footer a { color: #1A73E8; font-weight: 600; }
 .goog-te-banner-frame, .skiptranslate > iframe, #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
 body { top: 0 !important; }
 .goog-text-highlight { background: none !important; box-shadow: none !important; }
+@media (max-width: 860px) { .panels .p-main .ps { display: block; max-height: none; opacity: .92; margin-top: .9rem; font-size: 1.08rem; } }
 #mp-svc { display: none; }
 </style>
 </head>
@@ -941,8 +942,8 @@ body { top: 0 !important; }
   <div class="panels" id="panels">
     <div class="panel p-main" role="button" tabindex="0" data-contact data-fx>
       <span class="pk"><span class="pulse"></span><span data-i18n="mo.kicker">AI systems for business</span></span>
-      <div class="pt h1x" id="h1m">We put AI to work in your business. <span class="hl">Faithfully.</span></div>
-      <p class="ps" data-i18n="mo.sub">We build and run AI agents for every role, from CFO to receptionist, so your business does more with less.</p>
+      <div class="pt h1x" id="h1m">Your next hire is AI. <span class="hl">From CFO to front desk.</span></div>
+      <p class="ps" data-i18n="mo.sub">Do more with less. AI agents for every role in your business.</p>
       <div class="pgo"><span data-i18n="mo.go">Book a free consultation</span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
     </div>
     <div class="panel p-cases" role="button" tabindex="0" data-view="cases" data-fx>
@@ -1939,8 +1940,8 @@ const T = {
   "nav.edu": "Education",
   "cta.call": "Book a call",
   "mo.kicker": "AI systems for business",
-  "mo.title": "We put AI to work in your business. [Faithfully.]",
-  "mo.sub": "We build and run AI agents for every role, from CFO to receptionist, so your business does more with less.",
+  "mo.title": "Your next hire is AI. [From CFO to front desk.]",
+  "mo.sub": "Do more with less. AI agents for every role in your business.",
   "mo.go": "Book a free consultation",
   "edu.pk": "Chocham AI · Education",
   "edu.pt": "Learn AI with Chocham AI",
@@ -2886,8 +2887,8 @@ const T = {
   "nav.edu": "לימוד",
   "cta.call": "באשטעלט א שמועס",
   "mo.kicker": "AI סיסטעמען פאר ביזנעסער",
-  "mo.title": "מיר שטעלן AI צו דער ארבעט אין אייער ביזנעס. [געטריי.]",
-  "mo.sub": "מיר בויען און פירן AI אגענטן פאר יעדע פאזיציע, פון CFO ביז רעצעפשאן, אז אייער ביזנעס זאל טון מער מיט ווייניגער.",
+  "mo.title": "אייער נעקסטער ארבעטער איז AI. [פון CFO ביז דער פראנט דעסק.]",
+  "mo.sub": "טוט מער מיט ווייניגער. AI אגענטן פאר יעדע פאזיציע אין אייער ביזנעס.",
   "mo.go": "באשטעלט א פרייע קאנסולטאציע",
   "edu.pk": "חכם AI · לימוד",
   "edu.pt": "לערנט AI מיט חכם AI",
@@ -3833,8 +3834,8 @@ const T = {
   "nav.edu": "הדרכה",
   "cta.call": "קבעו שיחה",
   "mo.kicker": "מערכות AI לעסקים",
-  "mo.title": "אנחנו מכניסים AI לעבודה בעסק שלכם. [בנאמנות.]",
-  "mo.sub": "אנחנו בונים ומפעילים סוכני AI לכל תפקיד, מ-CFO ועד הקבלה, כדי שהעסק שלכם יעשה יותר עם פחות.",
+  "mo.title": "העובד הבא שלכם הוא AI. [מה-CFO ועד הקבלה.]",
+  "mo.sub": "עשו יותר עם פחות. סוכני AI לכל תפקיד בעסק שלכם.",
   "mo.go": "קבעו ייעוץ חינם",
   "edu.pk": "חכם AI · הדרכה",
   "edu.pt": "למדו AI עם חכם AI",
@@ -4780,8 +4781,8 @@ const T = {
   "nav.edu": "Formación",
   "cta.call": "Agende una llamada",
   "mo.kicker": "Sistemas de IA para empresas",
-  "mo.title": "Ponemos la IA a trabajar en su negocio. [Fielmente.]",
-  "mo.sub": "Creamos y operamos agentes de IA para cada puesto, del CFO a la recepción, para que su negocio haga más con menos.",
+  "mo.title": "Su próxima contratación es IA. [Del CFO a la recepción.]",
+  "mo.sub": "Haga más con menos. Agentes de IA para cada puesto de su negocio.",
   "mo.go": "Agende una consulta gratis",
   "edu.pk": "Chocham AI · Formación",
   "edu.pt": "Aprenda IA con Chocham AI",
@@ -6034,7 +6035,7 @@ const PAGE_TITLES = { cases: "Case Studies: AI in Real Business | Moses Agentic"
 const HOME_TITLE = document.title;
 function setPageTitle(v, k) {
   if (!CONFIG.prettyUrls || CONFIG.site !== "moses") return;
-  document.title = k ? "AI for " + PAGE_TITLES.work[k] + ": Our Work | Moses Agentic" : PAGE_TITLES[v] || "Moses Agentic: We Put AI to Work in Your Business";
+  document.title = k ? "AI for " + PAGE_TITLES.work[k] + ": Our Work | Moses Agentic" : PAGE_TITLES[v] || "Moses Agentic: Your Next Hire Is AI, From CFO to Front Desk";
 }
 function routeFromPath() {
   if (!CONFIG.prettyUrls) return false;
