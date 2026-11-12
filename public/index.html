@@ -12477,6 +12477,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function play() { if (done) { show(0); } playing = true; t0 = performance.now(); setPP(); syncA(); cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); try { if (!seen) { seen = true; track("video_play"); } } catch (x) {} }
   function pause() { if (!playing) return; acc += performance.now() - t0; playing = false; cancelAnimationFrame(raf); setPP(); syncA(); }
+  window.mvPause = () => { if (box) box.dataset.user = "1"; pause(); if (au) au.pause(); };
   window.mvPlayFromStart = withSound => { if (withSound && box) { sound = true; setSnd(); } show(0); play(); };
   document.addEventListener("DOMContentLoaded", () => {
     box = document.getElementById("mv"); if (!box) return;
@@ -12553,6 +12554,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setSnd();
     if ("IntersectionObserver" in window) new IntersectionObserver(es => es.forEach(en => { if (!en.isIntersecting) pause(); else if (!playing && !done && !p.dataset.user) play(); }), { threshold: .35 }).observe(p.querySelector(".sv"));
   }
+  window.srvPause = () => { const p = document.getElementById("srvpan"); if (p) p.dataset.user = "1"; pause(); if (au) au.pause(); };
   window.srvRender = function () {
     box = document.getElementById("srvbox"); if (!box || typeof t !== "function") return;
     const segs = t("srv.seg"); if (!Array.isArray(segs)) return;
@@ -12611,6 +12613,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function play() { if (done) { done = false; show(0); } playing = true; t0 = performance.now(); setPP(); syncA(); cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); }
   function pause() { if (!playing) return; acc += performance.now() - t0; playing = false; cancelAnimationFrame(raf); setPP(); syncA(); }
+  window.abkPause = () => { if (box) box.dataset.user = "1"; pause(); if (au) au.pause(); };
   window.abkRender = () => { if (stage) { stage.innerHTML = scene(sc); setPP(); setSnd(); } };
   document.addEventListener("DOMContentLoaded", () => {
     box = document.getElementById("abkv"); if (!box) return;
@@ -12624,6 +12627,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 })();
 </script>
+<script>(function () { const stop = () => ["mvPause", "srvPause", "abkPause"].forEach(f => { try { window[f] && window[f](); } catch (e) {} }); window.mediaStop = stop; document.addEventListener("click", e => { const x = e.target.closest("[data-view], [data-folder], [data-go], [data-contact], [data-book], [data-open-chat], [data-langs], [data-lang], .teamlink, .nav a, a[href]"); if (x && !x.closest(".srv-row, [data-abk-play], .mv-watch, #mv, .sv")) stop(); else if (x && x.closest(".srv-pan .srv-ag, .srv-pan .srv-cta")) stop(); }, true); addEventListener("popstate", stop); addEventListener("hashchange", stop); addEventListener("pagehide", stop); document.addEventListener("visibilitychange", () => { if (document.hidden) stop(); }); })();</script>
 <script>window.abkSteps = () => { const o = document.getElementById("abksteps"); if (o && typeof t === "function") o.innerHTML = (t("abk.steps") || []).map(x => `<li>${String(x).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c])}</li>`).join(""); }; document.addEventListener("DOMContentLoaded", () => window.abkSteps());</script>
 </body>
 </html>
